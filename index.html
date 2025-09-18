@@ -12,23 +12,28 @@
     body { font-family:'Poppins',sans-serif; background:#f0f4f8; }
     .banner-container{
       width:100%; max-width:900px; background:linear-gradient(135deg,#1f2937,#4b5563);
-      border-radius:2rem; box-shadow:0 10px 30px rgba(0,0,0,.25); overflow:hidden;
-      position:relative; color:#fff; display:flex; flex-direction:column; justify-content:space-between;
-      align-items:center; text-align:center; min-height:600px;
+      border-radius:2rem; box-shadow:0 10px 30px rgba(0,0,0,.25);
+      position:relative; color:#fff; display:flex; flex-direction:column;
+      justify-content:space-between; align-items:center; text-align:center; min-height:600px;
     }
     @keyframes fadeInDown{from{opacity:0;transform:translateY(-20px)}to{opacity:1;transform:translateY(0)}}
     @keyframes fadeInUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
     .animate-fadeInDown{animation:fadeInDown 1s ease-out forwards}
     .animate-fadeInUp{animation:fadeInUp 1s ease-out forwards}
     .course-card{
-      background:rgba(255,255,255,.1); border:1px solid rgba(255,255,255,.3); border-radius:1rem; padding:1.5rem;
-      backdrop-filter:blur(5px); width:80%; max-width:350px; margin:0; text-align:left; opacity:0; transform:scale(.95);
-      transition:all .5s ease-in-out; cursor:pointer;
+      background:rgba(255,255,255,.1); border:1px solid rgba(255,255,255,.3); border-radius:1rem;
+      padding:1.5rem; backdrop-filter:blur(5px); width:80%; max-width:350px;
+      text-align:left; opacity:0; transform:scale(.95); transition:all .5s ease-in-out; cursor:pointer;
     }
     .course-card:hover{background:rgba(255,255,255,.2); transform:scale(1.02)}
     .course-card.active{opacity:1; transform:scale(1)}
-    .course-card h3{font-weight:700; font-size:1.25rem; margin-bottom:.5rem}
-    .logo-olavo{max-height:50px; max-width:50px; display:inline-block; vertical-align:middle; border-radius:9999px; border:2px solid #f97316}
+    .logo-olavo{max-height:50px; max-width:50px; border-radius:9999px; border:2px solid #f97316}
+   
+    .card-headline { display:flex; align-items:flex-start; gap:.75rem; width:100%; min-width:0; }
+    .card-title {
+      min-width:0; flex:1 1 auto;
+      word-break: break-word; overflow-wrap:anywhere; hyphens:auto; line-height:1.2;
+    }
     #gif-overlay{position:fixed; inset:0; background:rgba(0,0,0,.7); display:none; justify-content:center; align-items:center; z-index:50}
     #gif-container{background:#fff; border-radius:1rem; padding:2rem; max-width:500px; text-align:center; position:relative}
     #gif-container img{width:100%; height:auto; border-radius:.75rem; margin-bottom:1rem}
@@ -39,7 +44,7 @@
   </style>
 </head>
 <body class="bg-gray-100 flex items-center justify-center min-h-screen">
-
+ 
   <div id="gif-overlay">
     <div id="gif-container">
       <span id="close-button">&times;</span>
@@ -50,9 +55,8 @@
   </div>
 
   <div class="banner-container flex flex-col justify-between p-8">
-    
+   
     <header class="w-full flex flex-col gap-3 z-10">
-    
       <div class="w-full flex items-center justify-center gap-3">
         <img src="logo.JPG"
              onerror="this.onerror=null;this.src='https://placehold.co/40x40/f97316/ffffff?text=LOGO'"
@@ -63,8 +67,6 @@
           <span class="block text-base font-semibold">Ibiporã-PR</span>
         </h1>
       </div>
-
-  
       <div class="w-full text-center">
         <p class="text-sm font-semibold animate-fadeInDown delay-200">INSCRIÇÕES ABERTAS</p>
         <p class="text-lg font-bold mt-2 animate-fadeInDown delay-500">MATRÍCULAS ATÉ 15/10</p>
@@ -73,21 +75,16 @@
 
     <main class="flex-1 flex flex-col items-center justify-center p-4 w-full">
       <h2 id="main-title" class="text-4xl md:text-5xl font-extrabold text-white text-center mb-6 opacity-0"></h2>
-
-
-      <div id="course-cards-container" class="flex flex-col items-center justify-center w-full space-y-6">
-    
-      </div>
+      <div id="course-cards-container" class="flex flex-col items-center justify-center w-full space-y-6"></div>
     </main>
 
-  
     <footer class="w-full flex flex-col items-center gap-2 z-10">
       <p class="text-sm font-light animate-fadeInUp">
         Av. dos Estudantes, nº 777 - Centro<br/>Ibiporã - PR
       </p>
       <p class="text-sm font-light animate-fadeInUp delay-200">
-        <a href="https://wa.me/554332581464" class="text-[#f97316] hover:underline" target="_blank" aria-label="WhatsApp">
-          <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="green" role="img">
+        <a href="https://wa.me/554332581464" class="text-[#f97316] hover:underline" target="_blank">
+          <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="green">
             <path d="M12 .5C5.648.5.5 5.648.5 12c0 2.1.547 4.072 1.5 5.79L.5 23.5l5.926-1.523A11.456 11.456 0 0012 23.5c6.352 0 11.5-5.148 11.5-11.5S18.352.5 12 .5zm0 20.833c-1.844 0-3.63-.49-5.208-1.42l-.373-.22-3.52.905.939-3.445-.243-.396A9.32 9.32 0 012.667 12C2.667 6.848 6.848 2.667 12 2.667S21.333 6.848 21.333 12 17.152 21.333 12 21.333zm5.322-6.83c-.293-.146-1.733-.857-2.003-.952-.27-.098-.467-.146-.663.147-.197.293-.76.952-.932 1.146-.173.196-.343.22-.636.074-.293-.147-1.236-.457-2.354-1.46-.87-.776-1.46-1.732-1.634-2.025-.173-.293-.018-.451.13-.598.134-.133.293-.344.44-.516.147-.173.197-.293.293-.49.098-.196.049-.367-.025-.514-.074-.147-.663-1.597-.91-2.19-.24-.577-.483-.498-.663-.508l-.567-.01c-.197 0-.515.074-.785.367s-1.03 1.006-1.03 2.455 1.054 2.847 1.2 3.042c.146.196 2.073 3.17 5.028 4.445.703.303 1.252.484 1.679.619.705.225 1.348.193 1.856.117.567-.084 1.733-.707 1.978-1.388.244-.68.244-1.264.171-1.388-.073-.123-.27-.196-.563-.342z"/>
           </svg>
         </a>
@@ -95,75 +92,69 @@
     </footer>
   </div>
 
- <script>
-  document.addEventListener('DOMContentLoaded', () => {
-    const courses = [
-      { title:"Ensino Médio + Técnico 2026", description:"Seu futuro começa aqui! Conecte-se com o mercado de trabalho e se prepare para os desafios da vida.", icon:"🎓", gifUrl:"cursos.png" },
-      { title:"Técnico em Administração", description:"Prepare-se para atuar em diversas áreas, com foco em gestão, finanças, marketing e muito mais.", icon:"📊", gifUrl:"adm.gif" },
-      { title:"Técnico em Agronegócio", description:"Aprenda sobre a produção, gestão e tecnologia no campo. Essencial para o futuro do agronegócio.", icon:"🌾", gifUrl:"agro.png" },
-      { title:"Técnico em Desenvolvimento de Sistemas", description:"Desenvolva suas habilidades em programação, banco de dados e segurança da informação.", icon:"💻", gifUrl:"des2.gif" }
-    ];
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const courses = [
+        { title:"Ensino Médio + Técnico 2026", description:"Seu futuro começa aqui! Conecte-se com o mercado de trabalho e se prepare para os desafios da vida.", icon:"🎓", gifUrl:"cursos.png" },
+        { title:"Técnico em Administração", description:"Prepare-se para atuar em diversas áreas, com foco em gestão, finanças, marketing e muito mais.", icon:"📊", gifUrl:"adm.gif" },
+        { title:"Técnico em Agronegócio", description:"Aprenda sobre a produção, gestão e tecnologia no campo. Essencial para o futuro do agronegócio.", icon:"🌾", gifUrl:"agro.png" },
+        { title:"Técnico em Desenvolvimento de Sistemas", description:"Desenvolva suas habilidades em programação, banco de dados e segurança da informação.", icon:"💻", gifUrl:"des2.gif" }
+      ];
 
-    const mainTitleEl = document.getElementById('main-title');
-    const cardsContainer = document.getElementById('course-cards-container');
-    const gifOverlay = document.getElementById('gif-overlay');
-    const courseGif = document.getElementById('course-gif');
-    const closeButton = document.getElementById('close-button');
+      const mainTitleEl = document.getElementById('main-title');
+      const cardsContainer = document.getElementById('course-cards-container');
+      const gifOverlay = document.getElementById('gif-overlay');
+      const courseGif = document.getElementById('course-gif');
+      const closeButton = document.getElementById('close-button');
 
-    function animateText(el, text, duration){
-      return new Promise(resolve=>{
-        el.textContent = '';
-        const total = text.length || 1;
-        let i = 0;
-        const step = duration / total;
-        const timer = setInterval(()=>{
-          el.textContent += text[i++];
-          if(i >= text.length){
-            clearInterval(timer);
-            resolve();
-          }
-        }, step);
-      });
-    }
-
-    function showCourses(){
-      cardsContainer.innerHTML = '';
-      courses.forEach((course, index) => {
-        const card = document.createElement('div');
-        card.className = 'course-card animate-fadeInUp';
-        card.style.animationDelay = (0.5 * index) + 's';
-        card.innerHTML = `
-          <div class="flex items-center space-x-4 mb-2">
-            <span class="text-3xl">${course.icon}</span>
-            <h3 class="text-lg font-bold">${course.title}</h3>
-          </div>
-          <p class="text-sm font-light">${course.description}</p>
-        `;
-        card.addEventListener('click', ()=>{
-          courseGif.src = course.gifUrl;
-          gifOverlay.style.display = 'flex';
+      function animateText(el, text, duration){
+        return new Promise(resolve=>{
+          el.textContent = '';
+          const total = text.length || 1;
+          let i = 0;
+          const step = duration / total;
+          const timer = setInterval(()=>{
+            el.textContent += text[i++];
+            if(i >= text.length){
+              clearInterval(timer);
+              resolve();
+            }
+          }, step);
         });
-        cardsContainer.appendChild(card);
-        setTimeout(()=>card.classList.add('active'), index*300);
-      });
-    }
+      }
 
-    closeButton.addEventListener('click', ()=> gifOverlay.style.display = 'none');
-    gifOverlay.addEventListener('click', e=>{ if(e.target===gifOverlay) gifOverlay.style.display='none'; });
+      function showCourses(){
+        cardsContainer.innerHTML = '';
+        courses.forEach((course, index) => {
+          const card = document.createElement('div');
+          card.className = 'course-card animate-fadeInUp';
+          card.style.animationDelay = (0.5 * index) + 's';
+          card.innerHTML = `
+            <div class="card-headline">
+              <span class="text-2xl md:text-3xl shrink-0">${course.icon}</span>
+              <h3 class="card-title text-base md:text-lg font-bold leading-snug">${course.title}</h3>
+            </div>
+            <p class="text-sm font-light mt-1">${course.description}</p>
+          `;
+          card.addEventListener('click', ()=>{
+            courseGif.src = course.gifUrl;
+            gifOverlay.style.display = 'flex';
+          });
+          cardsContainer.appendChild(card);
+          setTimeout(()=>card.classList.add('active'), index*300);
+        });
+      }
 
-    
-    async function start(){
-      mainTitleEl.classList.remove('opacity-0');  
-      await animateText(mainTitleEl, "Um futuro de sucesso te espera!", 1500);
-      setTimeout(()=>{
-        mainTitleEl.textContent = '';
-        showCourses();
-      }, 2000);
-    }
+      closeButton.addEventListener('click', ()=> gifOverlay.style.display = 'none');
+      gifOverlay.addEventListener('click', e=>{ if(e.target===gifOverlay) gifOverlay.style.display='none'; });
 
-    start();
-  });
-</script>
-
+      async function start(){
+        mainTitleEl.classList.remove('opacity-0');
+        await animateText(mainTitleEl, "Um futuro de sucesso te espera!", 1500);
+        setTimeout(()=>{ mainTitleEl.textContent=''; showCourses(); }, 2000);
+      }
+      start();
+    });
+  </script>
 </body>
 </html>

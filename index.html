@@ -95,64 +95,75 @@
     </footer>
   </div>
 
-  <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      const courses = [
-        { title:"Ensino Médio + Técnico 2026", description:"Seu futuro começa aqui! Conecte-se com o mercado de trabalho e se prepare para os desafios da vida.", icon:"🎓", gifUrl:"cursos.png" },
-        { title:"Técnico em Administração", description:"Prepare-se para atuar em diversas áreas, com foco em gestão, finanças, marketing e muito mais.", icon:"📊", gifUrl:"adm.gif" },
-        { title:"Técnico em Agronegócio", description:"Aprenda sobre a produção, gestão e tecnologia no campo. Essencial para o futuro do agronegócio.", icon:"🌾", gifUrl:"agro.png" },
-        { title:"Técnico em Desenvolvimento de Sistemas", description:"Desenvolva suas habilidades em programação, banco de dados e segurança da informação.", icon:"💻", gifUrl:"des2.gif" }
-      ];
+ <script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const courses = [
+      { title:"Ensino Médio + Técnico 2026", description:"Seu futuro começa aqui! Conecte-se com o mercado de trabalho e se prepare para os desafios da vida.", icon:"🎓", gifUrl:"cursos.png" },
+      { title:"Técnico em Administração", description:"Prepare-se para atuar em diversas áreas, com foco em gestão, finanças, marketing e muito mais.", icon:"📊", gifUrl:"adm.gif" },
+      { title:"Técnico em Agronegócio", description:"Aprenda sobre a produção, gestão e tecnologia no campo. Essencial para o futuro do agronegócio.", icon:"🌾", gifUrl:"agro.png" },
+      { title:"Técnico em Desenvolvimento de Sistemas", description:"Desenvolva suas habilidades em programação, banco de dados e segurança da informação.", icon:"💻", gifUrl:"des2.gif" }
+    ];
 
-      const mainTitleEl = document.getElementById('main-title');
-      const cardsContainer = document.getElementById('course-cards-container');
-      const gifOverlay = document.getElementById('gif-overlay');
-      const courseGif = document.getElementById('course-gif');
-      const closeButton = document.getElementById('close-button');
+    const mainTitleEl = document.getElementById('main-title');
+    const cardsContainer = document.getElementById('course-cards-container');
+    const gifOverlay = document.getElementById('gif-overlay');
+    const courseGif = document.getElementById('course-gif');
+    const closeButton = document.getElementById('close-button');
 
-      function animateText(el, text, duration){
-        return new Promise(resolve=>{
-          el.textContent = '';
-          const total = text.length;
-          let i = 0;
-          const t = duration / Math.max(total,1);
-          const it = setInterval(()=>{
-            el.textContent += text[i++];
-            if(i>=total){ clearInterval(it); resolve(); }
-          }, t);
+    function animateText(el, text, duration){
+      return new Promise(resolve=>{
+        el.textContent = '';
+        const total = text.length || 1;
+        let i = 0;
+        const step = duration / total;
+        const timer = setInterval(()=>{
+          el.textContent += text[i++];
+          if(i >= text.length){
+            clearInterval(timer);
+            resolve();
+          }
+        }, step);
+      });
+    }
+
+    function showCourses(){
+      cardsContainer.innerHTML = '';
+      courses.forEach((course, index) => {
+        const card = document.createElement('div');
+        card.className = 'course-card animate-fadeInUp';
+        card.style.animationDelay = (0.5 * index) + 's';
+        card.innerHTML = `
+          <div class="flex items-center space-x-4 mb-2">
+            <span class="text-3xl">${course.icon}</span>
+            <h3 class="text-lg font-bold">${course.title}</h3>
+          </div>
+          <p class="text-sm font-light">${course.description}</p>
+        `;
+        card.addEventListener('click', ()=>{
+          courseGif.src = course.gifUrl;
+          gifOverlay.style.display = 'flex';
         });
-      }
+        cardsContainer.appendChild(card);
+        setTimeout(()=>card.classList.add('active'), index*300);
+      });
+    }
 
-      function showCourses(){
-        cardsContainer.innerHTML = '';
-        courses.forEach((course, index) => {
-          const card = document.createElement('div');
-          card.className = 'course-card animate-fadeInUp';
-          card.style.animationDelay = (0.5 * index) + 's';
-          card.innerHTML = `
-            <div class="flex items-center space-x-4 mb-2">
-              <span class="text-3xl">${course.icon}</span>
-              <h3 class="text-lg font-bold">${course.title}</h3>
-            </div>
-            <p class="text-sm font-light">${course.description}</p>
-          `;
-          card.addEventListener('click', ()=>{
-            courseGif.src = course.gifUrl;
-            gifOverlay.style.display = 'flex';
-          });
-          cardsContainer.appendChild(card);
-          setTimeout(()=>card.classList.add('active'), index*300);
-        });
-      }
+    closeButton.addEventListener('click', ()=> gifOverlay.style.display = 'none');
+    gifOverlay.addEventListener('click', e=>{ if(e.target===gifOverlay) gifOverlay.style.display='none'; });
 
-      closeButton.addEventListener('click', ()=> gifOverlay.style.display = 'none');
-      gifOverlay.addEventListener('click', e=>{ if(e.target===gifOverlay) gifOverlay.style.display='none'; });
+    // 🔧 FIX AQUI: remover a classe que deixa invisível
+    async function start(){
+      mainTitleEl.classList.remove('opacity-0');   // <-- ESSA LINHA FAZ O TÍTULO APARECER
+      await animateText(mainTitleEl, "Um futuro de sucesso te espera!", 1500);
+      setTimeout(()=>{
+        mainTitleEl.textContent = '';
+        showCourses();
+      }, 2000);
+    }
 
-      (async function start(){
-        await animateText(mainTitleEl, "Um futuro de sucesso te espera!", 1500);
-        setTimeout(()=>{ mainTitleEl.textContent=''; showCourses(); }, 2000);
-      })();
-    });
-  </script>
+    start();
+  });
+</script>
+
 </body>
 </html>

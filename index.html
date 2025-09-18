@@ -1,294 +1,158 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Colégio Estadual Olavo Bilac de Ibiporã-PR</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
-    <style>
-        body {
-            font-family: 'Poppins', sans-serif;
-            background-color: #f0f4f8;
-        }
-        .banner-container {
-            width: 100%;
-            max-width: 900px;
-            background: linear-gradient(135deg, #1f2937, #4b5563);
-            border-radius: 2rem;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
-            overflow: hidden;
-            position: relative;
-            color: #fff;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            align-items: center;
-            text-align: center;
-            min-height: 600px;
-        }
-        @keyframes fadeInDown {
-            from {
-                opacity: 0;
-                transform: translateY(-20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-        .animate-fadeInDown {
-            animation: fadeInDown 1s ease-out forwards;
-        }
-        .animate-fadeInUp {
-            animation: fadeInUp 1s ease-out forwards;
-        }
-        .course-card {
-            background-color: rgba(255, 255, 255, 0.1);
-            border: 1px solid rgba(255, 255, 255, 0.3);
-            border-radius: 1rem;
-            padding: 1.5rem;
-            backdrop-filter: blur(5px);
-            width: 80%;
-            max-width: 350px;
-            margin: 1rem;
-            text-align: left;
-            opacity: 0;
-            transform: scale(0.95);
-            transition: all 0.5s ease-in-out;
-            cursor: pointer;
-        }
-        .course-card:hover {
-            background-color: rgba(255, 255, 255, 0.2);
-            transform: scale(1.02);
-        }
-        .course-card.active {
-            opacity: 1;
-            transform: scale(1);
-        }
-        .course-card h3 {
-            font-weight: 700;
-            font-size: 1.25rem;
-            margin-bottom: 0.5rem;
-        }
-        .logo-olavo {
-            max-height: 50px;
-            max-width: 50px;
-            display: inline-block;
-            vertical-align: middle;
-            margin-right: 0.5rem;
-            border-radius: 9999px; /* Borda arredondada */
-            border: 2px solid #f97316; /* Borda laranja */
-        }
-        #gif-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.7);
-            display: none;
-            justify-content: center;
-            align-items: center;
-            z-index: 50;
-        }
-        #gif-container {
-            background-color: #fff;
-            border-radius: 1rem;
-            padding: 2rem;
-            max-width: 500px;
-            text-align: center;
-            position: relative;
-        }
-        #gif-container img {
-            width: 100%;
-            height: auto;
-            border-radius: 0.75rem;
-            margin-bottom: 1rem;
-        }
-        #gif-container p {
-            color: #1f2937;
-            font-weight: 600;
-            font-size: 1.25rem;
-        }
-        #gif-container button {
-            background-color: #f97316;
-            color: #fff;
-            padding: 0.75rem 1.5rem;
-            border-radius: 0.5rem;
-            font-weight: bold;
-            margin-top: 1rem;
-            transition: background-color 0.3s;
-        }
-        #gif-container button:hover {
-            background-color: #c2410c;
-        }
-        #close-button {
-            position: absolute;
-            top: 1rem;
-            right: 1.5rem;
-            font-size: 2rem;
-            color: #1f2937;
-            cursor: pointer;
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Colégio Estadual Olavo Bilac de Ibiporã-PR</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet"/>
+  <style>
+    body { font-family:'Poppins',sans-serif; background:#f0f4f8; }
+    .banner-container{
+      width:100%; max-width:900px; background:linear-gradient(135deg,#1f2937,#4b5563);
+      border-radius:2rem; box-shadow:0 10px 30px rgba(0,0,0,.25); overflow:hidden;
+      position:relative; color:#fff; display:flex; flex-direction:column; justify-content:space-between;
+      align-items:center; text-align:center; min-height:600px;
+    }
+    @keyframes fadeInDown{from{opacity:0;transform:translateY(-20px)}to{opacity:1;transform:translateY(0)}}
+    @keyframes fadeInUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+    .animate-fadeInDown{animation:fadeInDown 1s ease-out forwards}
+    .animate-fadeInUp{animation:fadeInUp 1s ease-out forwards}
+    .course-card{
+      background:rgba(255,255,255,.1); border:1px solid rgba(255,255,255,.3); border-radius:1rem; padding:1.5rem;
+      backdrop-filter:blur(5px); width:80%; max-width:350px; margin:0; text-align:left; opacity:0; transform:scale(.95);
+      transition:all .5s ease-in-out; cursor:pointer;
+    }
+    .course-card:hover{background:rgba(255,255,255,.2); transform:scale(1.02)}
+    .course-card.active{opacity:1; transform:scale(1)}
+    .course-card h3{font-weight:700; font-size:1.25rem; margin-bottom:.5rem}
+    .logo-olavo{max-height:50px; max-width:50px; display:inline-block; vertical-align:middle; border-radius:9999px; border:2px solid #f97316}
+    #gif-overlay{position:fixed; inset:0; background:rgba(0,0,0,.7); display:none; justify-content:center; align-items:center; z-index:50}
+    #gif-container{background:#fff; border-radius:1rem; padding:2rem; max-width:500px; text-align:center; position:relative}
+    #gif-container img{width:100%; height:auto; border-radius:.75rem; margin-bottom:1rem}
+    #gif-container p{color:#1f2937; font-weight:600; font-size:1.25rem}
+    #gif-container button{background:#f97316; color:#fff; padding:.75rem 1.5rem; border-radius:.5rem; font-weight:700; margin-top:1rem; transition:background-color .3s}
+    #gif-container button:hover{background:#c2410c}
+    #close-button{position:absolute; top:1rem; right:1.5rem; font-size:2rem; color:#1f2937; cursor:pointer}
+  </style>
 </head>
 <body class="bg-gray-100 flex items-center justify-center min-h-screen">
-    <div id="gif-overlay">
-        <div id="gif-container">
-            <span id="close-button">&times;</span>
-            <img id="course-gif" src="" alt="GIF relacionado ao curso">
-            <p id="gif-message">Interessado? Faça já a sua matrícula!</p>
-            <button onclick="window.location.href='https://wa.me/554332581464'">FALE COM A SECRETARIA</button>
-        </div>
+  <!-- Overlay do GIF -->
+  <div id="gif-overlay">
+    <div id="gif-container">
+      <span id="close-button">&times;</span>
+      <img id="course-gif" src="" alt="GIF relacionado ao curso"/>
+      <p id="gif-message">Interessado? Faça já a sua matrícula!</p>
+      <button onclick="window.location.href='https://wa.me/554332581464'">FALE COM A SECRETARIA</button>
     </div>
+  </div>
 
-    <div class="banner-container flex flex-col justify-between p-8">
-        <header class="w-full flex justify-between items-center z-10">
-            <h1 class="text-2xl font-bold animate-fadeInDown text-center md:text-left">
-                <img src="logo.JPG" onerror="this.onerror=null;this.src='https://placehold.co/40x40/f97316/ffffff?text=LOGO'" alt="Colégio Olavo Bilac Logo" class="logo-olavo">
-                Colégio Estadual Olavo Bilac<br>Ibiporã-PR
-            </h1>
-            <div class="text-right">
-                <p class="text-sm font-semibold animate-fadeInDown delay-200">INSCRIÇÕES ABERTAS</p>
-                <p class="text-lg font-bold mt-2 animate-fadeInDown delay-500">MATRÍCULAS ATÉ 15/10</p>
-            </div>
-        </header>
+  <div class="banner-container flex flex-col justify-between p-8">
+    <!-- HEADER empilhado e centralizado -->
+    <header class="w-full flex flex-col gap-3 z-10">
+      <!-- Grupo: logo + título -->
+      <div class="w-full flex items-center justify-center gap-3">
+        <img src="logo.JPG"
+             onerror="this.onerror=null;this.src='https://placehold.co/40x40/f97316/ffffff?text=LOGO'"
+             alt="Colégio Olavo Bilac Logo"
+             class="logo-olavo"/>
+        <h1 class="text-2xl font-bold leading-tight text-center">
+          Colégio Estadual Olavo Bilac
+          <span class="block text-base font-semibold">Ibiporã-PR</span>
+        </h1>
+      </div>
 
-        <main class="flex-1 flex flex-col items-center justify-center p-4 w-full">
-            <h2 id="main-title" class="text-4xl md:text-5xl font-extrabold text-white text-center mb-6 opacity-0"></h2>
-            <div id="course-cards-container" class="flex flex-col md:flex-row items-center justify-center w-full">
-                <!-- Course cards will be injected here by JS -->
-            </div>
-        </main>
+      <!-- Bloco das chamadas (sempre abaixo do h1) -->
+      <div class="w-full text-center">
+        <p class="text-sm font-semibold animate-fadeInDown delay-200">INSCRIÇÕES ABERTAS</p>
+        <p class="text-lg font-bold mt-2 animate-fadeInDown delay-500">MATRÍCULAS ATÉ 15/10</p>
+      </div>
+    </header>
 
-        <footer class="w-full flex justify-between items-center z-10">
-            <p class="text-sm font-light animate-fadeInUp">
-                Av. dos Estudantes, nº 777 - Centro<br>Ibiporã - PR
-            </p>
-            <p class="text-sm font-light animate-fadeInUp delay-200">
-                <a href="https://wa.me/554332581464" class="text-[#f97316] hover:underline" target="_blank">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="green">
-    <path d="M12 .5C5.648.5.5 5.648.5 12c0 2.1.547 4.072 1.5 5.79L.5 23.5l5.926-1.523A11.456 11.456 0 0012 23.5c6.352 0 11.5-5.148 11.5-11.5S18.352.5 12 .5zm0 20.833c-1.844 0-3.63-.49-5.208-1.42l-.373-.22-3.52.905.939-3.445-.243-.396A9.32 9.32 0 012.667 12C2.667 6.848 6.848 2.667 12 2.667S21.333 6.848 21.333 12 17.152 21.333 12 21.333zm5.322-6.83c-.293-.146-1.733-.857-2.003-.952-.27-.098-.467-.146-.663.147-.197.293-.76.952-.932 1.146-.173.196-.343.22-.636.074-.293-.147-1.236-.457-2.354-1.46-.87-.776-1.46-1.732-1.634-2.025-.173-.293-.018-.451.13-.598.134-.133.293-.344.44-.516.147-.173.197-.293.293-.49.098-.196.049-.367-.025-.514-.074-.147-.663-1.597-.91-2.19-.24-.577-.483-.498-.663-.508l-.567-.01c-.197 0-.515.074-.785.367s-1.03 1.006-1.03 2.455 1.054 2.847 1.2 3.042c.146.196 2.073 3.17 5.028 4.445.703.303 1.252.484 1.679.619.705.225 1.348.193 1.856.117.567-.084 1.733-.707 1.978-1.388.244-.68.244-1.264.171-1.388-.073-.123-.27-.196-.563-.342z"/>
-  </svg></a> 
-            </p>
-        </footer>
-    </div>
+    <main class="flex-1 flex flex-col items-center justify-center p-4 w-full">
+      <h2 id="main-title" class="text-4xl md:text-5xl font-extrabold text-white text-center mb-6 opacity-0"></h2>
 
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const courses = [
-                {
-                    title: "Ensino Médio + Técnico 2026",
-                    description: "Seu futuro começa aqui! Conecte-se com o mercado de trabalho e se prepare para os desafios da vida.",
-                    icon: "🎓",
-                    gifUrl: "cursos.png"
-                },
-                {
-                    title: "Técnico em Administração",
-                    description: "Prepare-se para atuar em diversas áreas, com foco em gestão, finanças, marketing e muito mais.",
-                    icon: "📊",
-                    gifUrl: "adm.gif"
-                },
-                {
-                    title: "Técnico em Agronegócio",
-                    description: "Aprenda sobre a produção, gestão e tecnologia no campo. Essencial para o futuro do agronegócio.",
-                    icon: "🌾",
-                    gifUrl: "agro.png"
-                },
-                {
-                    title: "Técnico em Desenvolvimento de Sistemas",
-                    description: "Desenvolva suas habilidades em programação, banco de dados e segurança da informação.",
-                    icon: "💻",
-                    gifUrl: "des2.gif"
-                }
-            ];
+      <!-- Cards sempre na vertical com espaçamento -->
+      <div id="course-cards-container" class="flex flex-col items-center justify-center w-full space-y-6">
+        <!-- Injetado via JS -->
+      </div>
+    </main>
 
-            const mainTitleEl = document.getElementById('main-title');
-            const cardsContainer = document.getElementById('course-cards-container');
-            const gifOverlay = document.getElementById('gif-overlay');
-            const courseGif = document.getElementById('course-gif');
-            const closeButton = document.getElementById('close-button');
+    <!-- Rodapé centralizado e empilhado -->
+    <footer class="w-full flex flex-col items-center gap-2 z-10">
+      <p class="text-sm font-light animate-fadeInUp">
+        Av. dos Estudantes, nº 777 - Centro<br/>Ibiporã - PR
+      </p>
+      <p class="text-sm font-light animate-fadeInUp delay-200">
+        <a href="https://wa.me/554332581464" class="text-[#f97316] hover:underline" target="_blank" aria-label="WhatsApp">
+          <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="green" role="img">
+            <path d="M12 .5C5.648.5.5 5.648.5 12c0 2.1.547 4.072 1.5 5.79L.5 23.5l5.926-1.523A11.456 11.456 0 0012 23.5c6.352 0 11.5-5.148 11.5-11.5S18.352.5 12 .5zm0 20.833c-1.844 0-3.63-.49-5.208-1.42l-.373-.22-3.52.905.939-3.445-.243-.396A9.32 9.32 0 012.667 12C2.667 6.848 6.848 2.667 12 2.667S21.333 6.848 21.333 12 17.152 21.333 12 21.333zm5.322-6.83c-.293-.146-1.733-.857-2.003-.952-.27-.098-.467-.146-.663.147-.197.293-.76.952-.932 1.146-.173.196-.343.22-.636.074-.293-.147-1.236-.457-2.354-1.46-.87-.776-1.46-1.732-1.634-2.025-.173-.293-.018-.451.13-.598.134-.133.293-.344.44-.516.147-.173.197-.293.293-.49.098-.196.049-.367-.025-.514-.074-.147-.663-1.597-.91-2.19-.24-.577-.483-.498-.663-.508l-.567-.01c-.197 0-.515.074-.785.367s-1.03 1.006-1.03 2.455 1.054 2.847 1.2 3.042c.146.196 2.073 3.17 5.028 4.445.703.303 1.252.484 1.679.619.705.225 1.348.193 1.856.117.567-.084 1.733-.707 1.978-1.388.244-.68.244-1.264.171-1.388-.073-.123-.27-.196-.563-.342z"/>
+          </svg>
+        </a>
+      </p>
+    </footer>
+  </div>
 
-            function animateText(element, text, duration) {
-                return new Promise(resolve => {
-                    const totalSteps = text.length;
-                    let currentStep = 0;
-                    const intervalTime = duration / totalSteps;
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const courses = [
+        { title:"Ensino Médio + Técnico 2026", description:"Seu futuro começa aqui! Conecte-se com o mercado de trabalho e se prepare para os desafios da vida.", icon:"🎓", gifUrl:"cursos.png" },
+        { title:"Técnico em Administração", description:"Prepare-se para atuar em diversas áreas, com foco em gestão, finanças, marketing e muito mais.", icon:"📊", gifUrl:"adm.gif" },
+        { title:"Técnico em Agronegócio", description:"Aprenda sobre a produção, gestão e tecnologia no campo. Essencial para o futuro do agronegócio.", icon:"🌾", gifUrl:"agro.png" },
+        { title:"Técnico em Desenvolvimento de Sistemas", description:"Desenvolva suas habilidades em programação, banco de dados e segurança da informação.", icon:"💻", gifUrl:"des2.gif" }
+      ];
 
-                    const interval = setInterval(() => {
-                        element.textContent += text[currentStep];
-                        currentStep++;
-                        if (currentStep >= totalSteps) {
-                            clearInterval(interval);
-                            resolve();
-                        }
-                    }, intervalTime);
-                });
-            }
+      const mainTitleEl = document.getElementById('main-title');
+      const cardsContainer = document.getElementById('course-cards-container');
+      const gifOverlay = document.getElementById('gif-overlay');
+      const courseGif = document.getElementById('course-gif');
+      const closeButton = document.getElementById('close-button');
 
-            function showMainTitle() {
-                mainTitleEl.textContent = '';
-                mainTitleEl.classList.remove('opacity-0');
-                return animateText(mainTitleEl, "Um futuro de sucesso te espera!", 1500);
-            }
-
-            function showCourses() {
-                cardsContainer.innerHTML = '';
-                cardsContainer.classList.add('justify-center');
-
-                courses.forEach((course, index) => {
-                    const card = document.createElement('div');
-                    card.classList.add('course-card', 'animate-fadeInUp');
-                    card.style.animationDelay = (0.5 * index) + 's';
-                    card.innerHTML = `
-                        <div class="flex items-center space-x-4 mb-2">
-                            <span class="text-3xl">${course.icon}</span>
-                            <h3 class="text-lg font-bold">${course.title}</h3>
-                        </div>
-                        <p class="text-sm font-light">${course.description}</p>
-                    `;
-                    card.addEventListener('click', () => {
-                        courseGif.src = course.gifUrl;
-                        gifOverlay.style.display = 'flex';
-                    });
-                    cardsContainer.appendChild(card);
-                    setTimeout(() => card.classList.add('active'), index * 300);
-                });
-            }
-
-            closeButton.addEventListener('click', () => {
-                gifOverlay.style.display = 'none';
-            });
-            
-            gifOverlay.addEventListener('click', (e) => {
-                if (e.target === gifOverlay) {
-                    gifOverlay.style.display = 'none';
-                }
-            });
-
-            async function startAnimation() {
-                await showMainTitle();
-                setTimeout(() => {
-                    mainTitleEl.textContent = '';
-                    showCourses();
-                }, 2000);
-            }
-
-            startAnimation();
+      function animateText(el, text, duration){
+        return new Promise(resolve=>{
+          el.textContent = '';
+          const total = text.length;
+          let i = 0;
+          const t = duration / Math.max(total,1);
+          const it = setInterval(()=>{
+            el.textContent += text[i++];
+            if(i>=total){ clearInterval(it); resolve(); }
+          }, t);
         });
-    </script>
+      }
+
+      function showCourses(){
+        cardsContainer.innerHTML = '';
+        courses.forEach((course, index) => {
+          const card = document.createElement('div');
+          card.className = 'course-card animate-fadeInUp';
+          card.style.animationDelay = (0.5 * index) + 's';
+          card.innerHTML = `
+            <div class="flex items-center space-x-4 mb-2">
+              <span class="text-3xl">${course.icon}</span>
+              <h3 class="text-lg font-bold">${course.title}</h3>
+            </div>
+            <p class="text-sm font-light">${course.description}</p>
+          `;
+          card.addEventListener('click', ()=>{
+            courseGif.src = course.gifUrl;
+            gifOverlay.style.display = 'flex';
+          });
+          cardsContainer.appendChild(card);
+          setTimeout(()=>card.classList.add('active'), index*300);
+        });
+      }
+
+      closeButton.addEventListener('click', ()=> gifOverlay.style.display = 'none');
+      gifOverlay.addEventListener('click', e=>{ if(e.target===gifOverlay) gifOverlay.style.display='none'; });
+
+      (async function start(){
+        await animateText(mainTitleEl, "Um futuro de sucesso te espera!", 1500);
+        setTimeout(()=>{ mainTitleEl.textContent=''; showCourses(); }, 2000);
+      })();
+    });
+  </script>
 </body>
 </html>

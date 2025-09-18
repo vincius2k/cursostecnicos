@@ -39,7 +39,7 @@
   </style>
 </head>
 <body class="bg-gray-100 flex items-center justify-center min-h-screen">
-  <!-- Overlay do GIF -->
+
   <div id="gif-overlay">
     <div id="gif-container">
       <span id="close-button">&times;</span>
@@ -50,9 +50,9 @@
   </div>
 
   <div class="banner-container flex flex-col justify-between p-8">
-    <!-- HEADER empilhado e centralizado -->
+    
     <header class="w-full flex flex-col gap-3 z-10">
-      <!-- Grupo: logo + título -->
+    
       <div class="w-full flex items-center justify-center gap-3">
         <img src="logo.JPG"
              onerror="this.onerror=null;this.src='https://placehold.co/40x40/f97316/ffffff?text=LOGO'"
@@ -64,7 +64,7 @@
         </h1>
       </div>
 
-      <!-- Bloco das chamadas (sempre abaixo do h1) -->
+  
       <div class="w-full text-center">
         <p class="text-sm font-semibold animate-fadeInDown delay-200">INSCRIÇÕES ABERTAS</p>
         <p class="text-lg font-bold mt-2 animate-fadeInDown delay-500">MATRÍCULAS ATÉ 15/10</p>
@@ -74,13 +74,13 @@
     <main class="flex-1 flex flex-col items-center justify-center p-4 w-full">
       <h2 id="main-title" class="text-4xl md:text-5xl font-extrabold text-white text-center mb-6 opacity-0"></h2>
 
-      <!-- Cards sempre na vertical com espaçamento -->
+
       <div id="course-cards-container" class="flex flex-col items-center justify-center w-full space-y-6">
-        <!-- Injetado via JS -->
+    
       </div>
     </main>
 
-    <!-- Rodapé centralizado e empilhado -->
+  
     <footer class="w-full flex flex-col items-center gap-2 z-10">
       <p class="text-sm font-light animate-fadeInUp">
         Av. dos Estudantes, nº 777 - Centro<br/>Ibiporã - PR
@@ -151,9 +151,9 @@
     closeButton.addEventListener('click', ()=> gifOverlay.style.display = 'none');
     gifOverlay.addEventListener('click', e=>{ if(e.target===gifOverlay) gifOverlay.style.display='none'; });
 
-    // 🔧 FIX AQUI: remover a classe que deixa invisível
+    
     async function start(){
-      mainTitleEl.classList.remove('opacity-0');   // <-- ESSA LINHA FAZ O TÍTULO APARECER
+      mainTitleEl.classList.remove('opacity-0');  
       await animateText(mainTitleEl, "Um futuro de sucesso te espera!", 1500);
       setTimeout(()=>{
         mainTitleEl.textContent = '';
